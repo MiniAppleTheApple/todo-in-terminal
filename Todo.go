@@ -53,7 +53,7 @@ func (todo *Todo) Save() {
 	}
 }
 func (todo *Todo) Render() {
-	todo.input = GetInput("command to input: ")
+	todo.input = CLIInput()
 	data, _ := ioutil.ReadFile("data.json")
 	json.Unmarshal(data, &todo.list)
 	ResetStyle()

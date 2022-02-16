@@ -1,8 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 const ()
+
+func CLIInput() string {
+	input := ""
+	dir := getCurrentPath()
+	fmt.Printf("~%s />\033[36m", dir)
+	fmt.Scanln(&input)
+	return input
+}
 
 func GetInput(question string) string {
 	input := ""
@@ -36,4 +47,12 @@ func Bold(msg string) string {
 }
 func Yellow(msg string) string {
 	return fmt.Sprintf("\033[93m%v\033[0m", msg)
+}
+
+func getCurrentPath() string {
+    dir, err := os.Getwd()
+    if err != nil {
+        panic(err)
+    }
+    return dir
 }
